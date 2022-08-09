@@ -1,0 +1,7 @@
+POST http://localhost:3000/permissions
+Content-Type: application/json
+
+{
+  "action": "read",
+  "subject": "Article"
+}

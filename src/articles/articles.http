@@ -1,0 +1,19 @@
+POST http://localhost:3000/articles
+Content-Type: application/json
+
+{
+    "name": "roberto",
+    "identifierValue": "15654738-7",
+    "userId": "2b3e4297-9a9d-441d-ba68-ddc038158483"
+}
+
+###
+
+GET http://localhost:3000/articles/3
+###
+
+GET http://localhost:3000/articles
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmZGFhNGRhMS1kNDBlLTRiOTktYmRmYS0yOTFiY2I0MzM5MzgiLCJyb2xlIjoxLCJpYXQiOjE2NTk5ODk4NTMsImV4cCI6MTY2MDU5NDY1M30.5b6l7gQuP3vnbh0yXPd01bmc4FY-dnSXFHUIY8uw_N4
+
+###
+DELETE http://localhost:3000/articles/1

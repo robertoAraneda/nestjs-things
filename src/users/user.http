@@ -1,0 +1,14 @@
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "given": "rob",
+    "family": "araneda",
+    "password": "12345"
+}
+###
+
+GET http://localhost:3000/users
+
+###
+GET http://localhost:3000/users/fdaa4da1-d40e-4b99-bdfa-291bcb433938
