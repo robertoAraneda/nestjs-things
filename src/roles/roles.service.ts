@@ -4,17 +4,23 @@ import { Repository } from 'typeorm';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { UpdateRoleDto } from './dto/update-role.dto';
 import { RoleEntity } from './entities/role.entity';
+import { EventEmitter2 } from '@nestjs/event-emitter';
 
 @Injectable()
 export class RolesService {
   constructor(
     @InjectRepository(RoleEntity)
     private readonly _rolesRepository: Repository<RoleEntity>,
+    private readonly _eventEmitter: EventEmitter2,
   ) {}
-  create(createRoleDto: CreateRoleDto): Promise<RoleEntity> {
+  async create(createRoleDto: CreateRoleDto): Promise<RoleEntity> {
     const role = new RoleEntity(createRoleDto);
 
-    return this._rolesRepository.save(role);
+    const createdRole = await this._rolesRepository.save(role);
+
+    this._eventEmitter.emit('role.created', { role: createdRole });
+
+    return createdRole;
   }
 
   findAll(): Promise<RoleEntity[]> {

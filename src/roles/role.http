@@ -2,8 +2,8 @@ POST http://localhost:3000/roles
 Content-Type: application/json
 
 {
-  "code": "administrator",
-  "display": "Administrator"
+  "code": "administrator3",
+  "display": "Administrator3"
 }
 
 ###
@@ -12,5 +12,5 @@ GET http://localhost:3000/roles
 
 ###
 
-GET http://localhost:3000/roles/1
+GET http://localhost:3000/roles/50
 

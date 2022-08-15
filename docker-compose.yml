@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      target: production
+    image: minsalcl/portalpaciente_api
+    container_name: api-portalpaciente
+    ports:
+      - 3001:3001
+    environment:
+      DB_HOST: postgres
+      DB_DATABASE: portalpaciente
+      DB_USERNAME: develop
+      DB_PASSWORD: develop
+      DB_PORT: 5432
+      DB_SYNCHRONIZE: 'true'
+      SERVER_PORT: 3001
+      JWT_SECRET: secret
+      HTTP_TIMEOUT: 5000
+      HTTP_MAX_REDIRECTS: 5
+      HTTP_BASE_URL_TELECONSULTA: https://interconsulta.minsal.cl
+
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres
+    container_name: bd-portalpaciente
+    restart: always
+    volumes:
+      - data-postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: portalpaciente
+      POSTGRES_USER: develop
+      POSTGRES_PASSWORD: develop
+
+volumes:
+  data-postgres:
